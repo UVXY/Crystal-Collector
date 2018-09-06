@@ -1,7 +1,55 @@
+var random = 0;
 
-var randomNum;
+var randButton = 0;
+
+var totalValue = 0;
 var lose;
 var win;
+
+
+
+// functions =======================================
+
+// restart game
+function startGame() {
+    totalValue = 0;
+
+    random = Math.floor(Math.random() * 110) + 19;
+    $("#random-number").text(random);
+
+    randButton = Math.floor(Math.random() * 12) + 1;
+
+    $("#total").text(totalValue);
+
+game();
+}
+
+function game() {
+    // restart
+    totalValue = 0;
+
+    random = Math.floor(Math.random() * 110) + 19;
+    $("#random-number").text(random);
+
+    randButton = Math.floor(Math.random() * 12) + 1;
+
+    $("#random-button").on("click", function() {
+        totalValue = randButton;
+
+        $("#total").text(totalValue);
+    })
+    
+    
+    // $(".crystalValue").on("click", function(){
+
+    // })
+    // if (parseInt(totalValue) === random) {
+    //     alert("You win!");
+    // }
+    
+};
+startGame();
+
 
 // four crystals displayed as buttons(maybe)
 // rand number at the start of the game (19-120)
