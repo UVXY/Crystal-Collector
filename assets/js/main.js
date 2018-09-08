@@ -1,54 +1,85 @@
-var random = 0;
-
-var randButton = 0;
+var random = Math.floor(Math.random() * 110) + 19;
 
 var totalValue = 0;
-var lose;
-var win;
-
-
+var lose = 0;
+var wins = 0;
 
 // functions =======================================
 
 // restart game
-function startGame() {
+function reset() {
     totalValue = 0;
 
-    random = Math.floor(Math.random() * 110) + 19;
+    random = Math.floor(Math.random() * 110) +19;
     $("#random-number").text(random);
 
-    randButton = Math.floor(Math.random() * 12) + 1;
+    randButton1 = Math.floor(Math.random() * 12) + 1;
+    randButton2 = Math.floor(Math.random() * 12) + 1;
+    randButton3 = Math.floor(Math.random() * 12) + 1;
+    randButton4 = Math.floor(Math.random() * 12) + 1;
 
     $("#total").text(totalValue);
 
-game();
+    // game();
 }
 
-function game() {
-    // restart
-    totalValue = 0;
+// outcome, will be the wins++ lost++
+function winning(){
+    alert("Winner!");
+    wins++;
+    $("#wins").text(wins);
+    reset();
+}
+function losing(){
+    alert("Loser!");
+    lose++;
+    $("#lost").text(lose);
+    reset();
+}
 
-    random = Math.floor(Math.random() * 110) + 19;
-    $("#random-number").text(random);
+// function game(){
+$("#crystal1").on("click", function () {
+    totalValue = totalValue + randButton1;
+    $("#total").text(totalValue);
+    if (totalValue === random) {
+        winning();
+    }
+    else if (totalValue > random) {
+        losing();
+    }
+})
+$("#crystal2").on("click", function () {
+    totalValue = totalValue + randButton2;
+    $("#total").text(totalValue);
+    if (totalValue === random) {
+        winning();
+    }
+    else if (totalValue > random) {
+        losing();
+    }
+})
+$("#crystal3").on("click", function () {
+    totalValue = totalValue + randButton3;
+    $("#total").text(totalValue);
+    if (totalValue === random) {
+        winning();
+    }
+    else if (totalValue > random) {
+        losing();
+    }
+})
+$("#crystal4").on("click", function () {
+    totalValue = totalValue + randButton4;
+    $("#total").text(totalValue);
+    if (totalValue === random) {
+        winning();
+    }
+    else if (totalValue > random) {
+        losing();
+    }
+})
 
-    randButton = Math.floor(Math.random() * 12) + 1;
-
-    $("#random-button").on("click", function() {
-        totalValue = randButton;
-
-        $("#total").text(totalValue);
-    })
-    
-    
-    // $(".crystalValue").on("click", function(){
-
-    // })
-    // if (parseInt(totalValue) === random) {
-    //     alert("You win!");
-    // }
-    
-};
-startGame();
+reset();
 
 
 // four crystals displayed as buttons(maybe)
